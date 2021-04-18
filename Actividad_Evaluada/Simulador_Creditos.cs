@@ -47,7 +47,7 @@ namespace Actividad_Evaluada
         {
             //Validar el Monto ingresado
             string MontoSolicitado = txtMontoS;
-            if (MontoSolicitado < 500000 && MontoSolicitado <= 0)
+            if (MontoSolicitado < 500000 || MontoSolicitado <= 0)
             {
                 MessageBox.Show("El monto ingresado debe ser igual o mayor a $500.000 pesos");
             }
@@ -57,7 +57,7 @@ namespace Actividad_Evaluada
             }
 
             //Validar el numero de cuotas
-            if (txtCuotas.Text < 1 && txtCuotas.Text > 36)
+            if (txtCuotas.Text < 1 || txtCuotas.Text > 36)
             {
                 MessageBox.Show("La cantidad de cuotas no es aceptada." + "\n" + "Debe escoger entre 1 y 36 cuotas");
             }
@@ -90,7 +90,7 @@ namespace Actividad_Evaluada
                 txtMontoT.Enabled = false;        //Para que no se pueda cambiar el texto de la caja
                 txtMontoT.AppendText(MontoTotal);
             }
-
+             
 
             //Calcular valor por cuota
             int valorCuota;
