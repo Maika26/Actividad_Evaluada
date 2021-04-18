@@ -46,27 +46,25 @@ namespace Actividad_Evaluada
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             //Validar el Monto ingresado
-            string MontoSolicitado = txtMontoS.Text;
-            MontoSolicitado = int.Parse(txtMontoS);
+            int MontoSolicitado = int.Parse(txtMontoS.Text);
             if (MontoSolicitado < 500000 || MontoSolicitado <= 0)
             {
                 MessageBox.Show("El monto ingresado debe ser igual o mayor a $500.000 pesos");
             }
             else
             {
-                MessageBox.Show("El monto ingresado es válido");
+                
             }
 
-            //Validar el numero de cuotas
-            string Cuotas = txtCuotas.Text;
-            Cuotas = int.Parse(txtCuotas);
+            //Validar el numero de cuotas 
+            int Cuotas = int.Parse(txtCuotas.Text);
             if (Cuotas < 1 || Cuotas > 36)
             {
                 MessageBox.Show("La cantidad de cuotas no es aceptada." + "\n" + "Debe escoger entre 1 y 36 cuotas");
             }
             else
             {
-                MessageBox.Show("El número de cuotas es válido ");
+                
             }
 
             //Intereses aplicados al monto solicitado
@@ -77,21 +75,21 @@ namespace Actividad_Evaluada
                 interes = (MontoSolicitado * 10) / 100;
                 MontoTotal = MontoSolicitado + interes;
                 txtMontoT.Enabled = false;        //Para que no se pueda cambiar el texto de la caja
-                txtMontoT.AppendText(MontoTotal);
+                txtMontoT.AppendText(Convert.ToString(MontoTotal));
             }
             else if(Cuotas >12 && Cuotas <=24)
             {
                 interes = (MontoSolicitado * 20) / 100;
                 MontoTotal = MontoSolicitado + interes;
                 txtMontoT.Enabled = false;        //Para que no se pueda cambiar el texto de la caja
-                txtMontoT.AppendText(MontoTotal);
+                txtMontoT.AppendText(Convert.ToString(MontoTotal));
             }
             else
             {
                 interes = (MontoSolicitado * 35) / 100;
                 MontoTotal = MontoSolicitado + interes;
                 txtMontoT.Enabled = false;        //Para que no se pueda cambiar el texto de la caja
-                txtMontoT.AppendText(MontoTotal);
+                txtMontoT.AppendText(Convert.ToString(MontoTotal));
             }
              
 
@@ -99,7 +97,7 @@ namespace Actividad_Evaluada
             int valorCuota;
             valorCuota = MontoTotal / Cuotas;
             txtVCuota.Enabled = false;           //Para que no se pueda cambiar el texto de la caja
-            txtVCuota.AppendText(valorCuota);
+            txtVCuota.AppendText(Convert.ToString(valorCuota));
 
 
 
