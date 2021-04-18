@@ -35,8 +35,8 @@ namespace Actividad_Evaluada
 
         private void txtMontoT_TextChanged(object sender, EventArgs e)
         {
-
-        }
+             
+    }
 
         private void txtVCuota_TextChanged(object sender, EventArgs e)
         {
@@ -46,7 +46,8 @@ namespace Actividad_Evaluada
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             //Validar el Monto ingresado
-            if (txtMontoS.Text < 500000 && txtMontoS.Text <= 0)
+            string MontoSolicitado = txtMontoS;
+            if (MontoSolicitado < 500000 && MontoSolicitado <= 0)
             {
                 MessageBox.Show("El monto ingresado debe ser igual o mayor a $500.000 pesos");
             }
@@ -64,6 +65,44 @@ namespace Actividad_Evaluada
             {
                 MessageBox.Show("El número de cuotas es válido ");
             }
+
+            //Intereses aplicados al monto solicitado
+            int interes;
+            int MontoTotal;
+            if(txtCuotas >=1 && txtCuotas <=12)
+            {
+                interes = (txtMontoS * 10) / 100;
+                MontoTotal = txtMontoS + interes;
+                txtMontoT.Enabled = false;        //Para que no se pueda cambiar el texto de la caja
+                txtMontoT.AppendText(MontoTotal);
+            }
+            else if(txtCuotas >12 && txtCuotas <=24)
+            {
+                interes = (txtMontoS * 20) / 100;
+                MontoTotal = txtMontoS + interes;
+                txtMontoT.Enabled = false;        //Para que no se pueda cambiar el texto de la caja
+                txtMontoT.AppendText(MontoTotal);
+            }
+            else
+            {
+                interes = (txtMontoS * 35) / 100;
+                MontoTotal = txtMontoS + interes;
+                txtMontoT.Enabled = false;        //Para que no se pueda cambiar el texto de la caja
+                txtMontoT.AppendText(MontoTotal);
+            }
+
+
+            //Calcular valor por cuota
+            int valorCuota;
+            valorCuota = MontoTotal / txtCuotas;
+            txtVCuota.Enabled = false;           //Para que no se pueda cambiar el texto de la caja
+            txtVCuota.AppendText(valorCuota);
+
+
+
+
+
+
 
 
 
